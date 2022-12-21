@@ -5,19 +5,19 @@ import { Image, Type as ImageType } from '../blocks/Image';
 import { CallToAction, Type as CallToActionType } from '../blocks/CallToAction';
 import { Content, Type as ContentType } from '../blocks/Content';
 
-export type Layout = CallToActionType | ContentType | ImageType
+export type Layout = CallToActionType | ContentType | ImageType;
 
 export type Type = {
-  title: string
-  slug: string
-  image?: MediaType
-  layout: Layout[]
+  title: string;
+  slug: string;
+  image?: MediaType;
+  layout: Layout[];
   meta: {
-    title?: string
-    description?: string
-    keywords?: string
-  }
-}
+    title?: string;
+    description?: string;
+    keywords?: string;
+  };
+};
 
 export const Page: CollectionConfig = {
   slug: 'pages',
@@ -35,21 +35,11 @@ export const Page: CollectionConfig = {
       required: true,
     },
     {
-      name: 'image',
-      label: 'Featured Image',
-      type: 'upload',
-      relationTo: 'media',
-    },
-    {
       name: 'layout',
       label: 'Page Layout',
       type: 'blocks',
       minRows: 1,
-      blocks: [
-        CallToAction,
-        Content,
-        Image,
-      ],
+      blocks: [CallToAction, Content, Image],
     },
     {
       name: 'meta',
@@ -81,9 +71,7 @@ export const Page: CollectionConfig = {
         position: 'sidebar',
       },
       hooks: {
-        beforeValidate: [
-          formatSlug('title'),
-        ],
+        beforeValidate: [formatSlug('title')],
       },
     },
   ],
